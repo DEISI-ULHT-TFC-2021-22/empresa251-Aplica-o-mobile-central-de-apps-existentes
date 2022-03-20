@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:integer/widgets/drawer.dart';
-import 'package:integer/widgets/news_card.dart';
+import 'package:integer/widgets/list_news_card.dart';
 import 'package:integer/widgets/app_bar.dart';
 
 class NewsScreen extends StatelessWidget {
@@ -18,6 +18,7 @@ class NewsScreen extends StatelessWidget {
           return const PostCard();
         },
       ),
+
     );
   }
 }

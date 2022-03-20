@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
-import 'package:integer/screens/news_screen.dart';
+import 'package:integer/screens/list_news_screen.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 class SplashScreenWidget extends StatelessWidget {
@@ -10,17 +10,17 @@ class SplashScreenWidget extends StatelessWidget {
       seconds: 5,
       navigateAfterSeconds: const NewsScreen(title: 'Noticias'),
       backgroundColor: Palette.integerOrange,
-      title: new Text(
+      title: const Text(
         'Integer Consulting',
         textScaleFactor: 2,
         style: TextStyle(
           color: Colors.white,
         ),
       ),
-      image: new Image.asset(
+      image: Image.asset(
         'assets/images/logo.jpg',
       ),
-      loadingText: Text(
+      loadingText: const Text(
         "A carregar",
         style: TextStyle(
           color: Colors.white,
