@@ -12,7 +12,7 @@ class TimeSheetScreen extends StatelessWidget {
       drawer: const NavDrawer(),
       appBar: TopAppBar(title: title, titleColor: Colors.white),
       body: const Center(
-        child: Text('Férias'),
+        child: Text('Horas'),
       ),
     );
   }

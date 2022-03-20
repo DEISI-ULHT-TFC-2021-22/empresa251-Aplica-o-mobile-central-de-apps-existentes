@@ -15,13 +15,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Palette.integerOrange,
       ),
-      home: const MainScreen(
-        screens: [
-          NewsScreen(title: 'Noticias'),
-          VacationsScreen(title: 'Férias'),
-          TimeSheetScreen(title: 'Horas'),
-        ],
-      ),
+      initialRoute: 'news',
+      routes: {
+        'news' : (context) => const NewsScreen(title: 'News'),
+        'timeSheet' : (context) => const TimeSheetScreen(title: 'Horas'),
+        'vacations' : (context) => const VacationsScreen(title: 'Férias'),
+      }
     );
   }
 }

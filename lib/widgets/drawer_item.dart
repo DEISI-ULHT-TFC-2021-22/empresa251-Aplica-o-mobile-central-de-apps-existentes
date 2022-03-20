@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:integer/screens/main_screen.dart';
+import 'package:integer/screens/timesheet_screen.dart';
 
 class DrawerItem extends StatelessWidget {
   final String text;
+  final String route;
   final IconData icon;
   final Color textColor;
   final Color iconColor;
 
   DrawerItem({
     required this.text,
+    required this.route,
     required this.icon,
     required this.textColor,
     required this.iconColor,
@@ -27,7 +29,7 @@ class DrawerItem extends StatelessWidget {
           color: textColor,
         ),
       ),
-      onTap: () => {},
+      onTap: () => Navigator.pushNamed(context, route),
     );
   }
 }
