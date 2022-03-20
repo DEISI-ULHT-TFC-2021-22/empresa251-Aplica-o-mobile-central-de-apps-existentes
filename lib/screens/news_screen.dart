@@ -12,8 +12,11 @@ class NewsScreen extends StatelessWidget {
     return Scaffold(
       drawer: const NavDrawer(),
       appBar: TopAppBar(title: title, titleColor: Colors.white),
-      body: const Center(
-        child: NewsCard(text: 'asdsa'),
+      body: ListView.builder(
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index) {
+          return PostCard();
+        },
       ),
     );
   }
