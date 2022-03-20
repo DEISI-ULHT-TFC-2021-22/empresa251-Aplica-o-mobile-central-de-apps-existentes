@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
 import 'package:integer/helper/demo_values.dart';
-import 'package:integer/helper/demo_values.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard({Key? key}) : super(key: key);
