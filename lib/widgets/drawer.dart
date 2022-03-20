@@ -16,7 +16,7 @@ class NavDrawer extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             DrawerHeadProfile(accountName: 'Tiago Santos', accountEmail: 'example@gmail.com'),
-            Divider(color: Colors.white),
+            const Divider(color: Colors.white),
             DrawerItem(text: 'Noticias', route: 'news', textColor: Colors.white, iconColor: Colors.white, icon: Icons.newspaper_outlined),
             DrawerItem(text: 'Folha de horas', route: 'timeSheet', textColor: Colors.white, iconColor: Colors.white,icon: Icons.punch_clock_outlined),
             DrawerItem(text: 'Férias', route: 'vacations', textColor: Colors.white, iconColor: Colors.white,icon: Icons.beach_access_outlined),

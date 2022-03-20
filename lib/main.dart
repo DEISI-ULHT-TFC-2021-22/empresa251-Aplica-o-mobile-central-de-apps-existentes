@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'config/palette.dart';
-import 'package:integer/screens/main_screen.dart';
 import 'package:integer/screens/news_screen.dart';
 import 'package:integer/screens/timesheet_screen.dart';
 import 'package:integer/screens/vacations_screen.dart';
