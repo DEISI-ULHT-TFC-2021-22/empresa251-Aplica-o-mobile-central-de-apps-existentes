@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
           gradient: LinearGradient(
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
-              colors: [Palette.integerOrange, Palette.integerOrange]),
+              colors: [Palette.orange, Palette.orange]),
         ),
         child: ListView(
           children: <Widget>[

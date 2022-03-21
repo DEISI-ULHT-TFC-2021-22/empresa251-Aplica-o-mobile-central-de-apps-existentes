@@ -17,7 +17,7 @@ class NewsCard extends StatelessWidget {
             Expanded(
               flex: 3,
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -42,7 +42,7 @@ class NewsCard extends StatelessWidget {
                 ],
               ),
             ),
-            const Divider(color: Palette.integerOrange),
+            const Divider(color: Palette.orange),
             Expanded(
               flex: 1,
               child: Row(
@@ -75,8 +75,12 @@ class _NewsDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       DemoValues.postTitle,
+      style: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }
@@ -158,7 +162,7 @@ class _PostTimeStamp extends StatelessWidget {
     return const Text(
       DemoValues.postTime,
       style: TextStyle(
-        color: Palette.integerOrange,
+        color: Palette.orange,
       ),
     );
   }

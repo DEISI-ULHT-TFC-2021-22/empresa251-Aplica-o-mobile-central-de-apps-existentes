@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:integer/config/palette.dart';
 import 'package:integer/widgets/drawer.dart';
 import 'package:integer/widgets/app_bar.dart';
+import 'package:integer/widgets/vacation_count.dart';
+import 'package:integer/widgets/vacation_label.dart';
+import 'package:integer/widgets/calendar.dart';
 
 class VacationsScreen extends StatelessWidget {
   final String title;
@@ -11,8 +15,45 @@ class VacationsScreen extends StatelessWidget {
     return Scaffold(
       drawer: const NavDrawer(),
       appBar: TopAppBar(title: title, titleColor: Colors.white),
-      body: const Center(
-        child: Text('Férias'),
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      VacationCount(),
+                    ],
+                  ),
+                ]
+              ),
+            ),
+            const Divider(color: Palette.orange),
+            Expanded(
+              flex: 10,
+              child: Calendar(),
+            ),
+            const Divider(color: Palette.orange),
+            Expanded(
+              flex: 1,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        VacationLabel(),
+                      ],
+                    ),
+                  ]
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

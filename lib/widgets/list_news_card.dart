@@ -19,7 +19,7 @@ class PostCard extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 _Post(),
-                Divider(color: Palette.integerOrange),
+                Divider(color: Palette.orange),
                 _PostDetails(),
               ],
             ),
@@ -152,7 +152,7 @@ class _PostTimeStamp extends StatelessWidget {
       child: Text(
         DemoValues.postTime,
         style: TextStyle(
-          color: Palette.integerOrange,
+          color: Palette.orange,
         ),
       ),
     );

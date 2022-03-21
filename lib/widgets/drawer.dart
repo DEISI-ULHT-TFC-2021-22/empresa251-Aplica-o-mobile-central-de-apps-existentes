@@ -10,7 +10,7 @@ class NavDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Material(
-        color: Palette.integerOrange,
+        color: Palette.orange,
         child: ListView(
           // Remove padding
           padding: EdgeInsets.zero,

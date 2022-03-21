@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 class Palette {
-  static const MaterialColor integerOrange = MaterialColor(
+  static const MaterialColor orange = MaterialColor(
     0xffef3e23, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
     <int, Color>{
       50: const Color(0xffce5641 ),//10%

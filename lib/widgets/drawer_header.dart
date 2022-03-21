@@ -26,7 +26,7 @@ class DrawerHeadProfile extends StatelessWidget {
         ),
       ),
       decoration: const BoxDecoration(
-        color: Palette.integerOrange,
+        color: Palette.orange,
       ),
     );
   }

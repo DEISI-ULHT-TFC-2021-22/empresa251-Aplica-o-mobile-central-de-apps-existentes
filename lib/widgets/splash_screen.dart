@@ -9,7 +9,7 @@ class SplashScreenWidget extends StatelessWidget {
     return SplashScreen(
       seconds: 5,
       navigateAfterSeconds: const NewsScreen(title: 'Noticias'),
-      backgroundColor: Palette.integerOrange,
+      backgroundColor: Palette.orange,
       title: const Text(
         'Integer Consulting',
         textScaleFactor: 2,
