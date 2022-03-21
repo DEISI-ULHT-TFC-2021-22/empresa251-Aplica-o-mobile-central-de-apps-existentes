@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
-import 'package:integer/widgets/drawer.dart';
+import 'package:integer/widgets/drawer/drawer.dart';
 import 'package:integer/widgets/app_bar.dart';
-import 'package:integer/widgets/vacation_count.dart';
-import 'package:integer/widgets/vacation_label.dart';
-import 'package:integer/widgets/calendar.dart';
+import 'package:integer/widgets/vacation/vacation_count.dart';
+import 'package:integer/widgets/vacation/vacation_label.dart';
+import 'package:integer/widgets/vacation/calendar.dart';
 
 class VacationsScreen extends StatelessWidget {
   final String title;

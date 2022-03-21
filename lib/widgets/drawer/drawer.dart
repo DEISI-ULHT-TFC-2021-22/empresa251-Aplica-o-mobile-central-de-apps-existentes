@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
-import 'package:integer/widgets/drawer_header.dart';
-import 'package:integer/widgets/drawer_item.dart';
+import 'package:integer/widgets/drawer/drawer_header.dart';
+import 'package:integer/widgets/drawer/drawer_item.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({Key? key}) : super(key: key);
