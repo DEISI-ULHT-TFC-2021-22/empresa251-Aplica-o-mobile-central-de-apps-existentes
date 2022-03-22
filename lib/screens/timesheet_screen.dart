@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:integer/widgets/drawer/drawer.dart';
 import 'package:integer/widgets/app_bar.dart';
+import '../widgets/time_sheet/dropdown_widget.dart';
+import '../config/months.dart';
 
 class TimeSheetScreen extends StatelessWidget {
   final String title;
@@ -9,11 +11,19 @@ class TimeSheetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavDrawer(),
-      appBar: TopAppBar(title: title, titleColor: Colors.white),
-      body: const Center(
-        child: Text('Horas'),
-      ),
-    );
+        drawer: const NavDrawer(),
+        appBar: TopAppBar(title: title, titleColor: Colors.white),
+        body: Container(
+          padding: EdgeInsets.all(12),
+          child: Stack(
+            children: [
+              Positioned(
+                right: 5,
+                top: 20,
+                child: DropDown(Months.months),
+              ),
+            ],
+          ),
+        ));
   }
 }
