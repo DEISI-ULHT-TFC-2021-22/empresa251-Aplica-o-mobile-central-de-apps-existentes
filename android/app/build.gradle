@@ -21,11 +21,6 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-def flutterMinSdkVersion = localProperties.getProperty('flutter.minSdkVersion')
-if (flutterMinSdkVersion == null) {
-    flutterMinSdkVersion = flutter.minSdkVersion.toString()
-}
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
@@ -49,10 +44,8 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.integer"
-        //minSdkVersion flutter.minSdkVersion
-        //targetSdkVersion flutter.targetSdkVersion
-        minSdkVersion 23
-        targetSdkVersion 31
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
