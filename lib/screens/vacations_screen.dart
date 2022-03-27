@@ -3,7 +3,7 @@ import 'package:integer/config/palette.dart';
 import 'package:integer/widgets/drawer/drawer.dart';
 import 'package:integer/widgets/app_bar.dart';
 import 'package:integer/widgets/vacation/calendar.dart';
-import 'package:integer/widgets/vacation/vacation_card.dart';
+import 'package:integer/widgets/vacation/vacation_label_card.dart';
 
 class VacationsScreen extends StatelessWidget {
   final String title;
@@ -16,14 +16,14 @@ class VacationsScreen extends StatelessWidget {
       appBar: TopAppBar(title: title, titleColor: Colors.white),
       body: Column(
         children: <Widget>[
-          Expanded(
-            flex: 3,
-            child: Calendar(),
-          ),
-          const Divider(color: Palette.orange),
           const Expanded(
             flex: 2,
-            child: VacationCard(),
+            child: VacationLabelCard(),
+          ),
+          const Divider(color: Palette.orange),
+          Expanded(
+            flex: 4,
+            child: Calendar(),
           ),
         ],
       ),
