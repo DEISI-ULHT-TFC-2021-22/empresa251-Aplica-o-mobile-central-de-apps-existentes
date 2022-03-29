@@ -3,6 +3,7 @@ import 'package:integer/widgets/drawer/drawer.dart';
 import 'package:integer/widgets/app_bar.dart';
 import '../widgets/time_sheet/dropdown_widget.dart';
 import '../config/months.dart';
+import '../widgets/time_sheet/hour_box_widget.dart';
 
 class TimeSheetScreen extends StatelessWidget {
   final String title;
@@ -19,9 +20,10 @@ class TimeSheetScreen extends StatelessWidget {
             children: [
               Positioned(
                 right: 5,
-                top: 20,
+                top: 50,
                 child: DropDown(Months.months),
               ),
+              Positioned(child: HourBox())
             ],
           ),
         ));
