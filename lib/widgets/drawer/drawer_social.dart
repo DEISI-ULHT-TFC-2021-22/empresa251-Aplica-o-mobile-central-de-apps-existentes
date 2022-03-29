@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class DrawerSocial extends StatelessWidget {
   const DrawerSocial();
@@ -16,12 +15,6 @@ class DrawerSocial extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      onTap: () => _launchURL,
     );
   }
-}
-
-_launchURL() async {
-  const _url = 'https://integerconsulting.pt/';
-  if (!await launch(_url)) throw 'Could not launch $_url';
 }

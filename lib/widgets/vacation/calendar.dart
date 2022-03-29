@@ -40,6 +40,29 @@ class _CalendarState extends State<Calendar> {
         outsideDaysVisible: false,
         weekendStyle: const TextStyle().copyWith(color: Palette.orange),
         holidayStyle: const TextStyle().copyWith(color: Palette.green),
+        selectedColor: Palette.green,
+      ),
+      builders: CalendarBuilders(
+        selectedDayBuilder: (context, date, events) => Container(
+            margin: const EdgeInsets.all(4.0),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(0.0)),
+            child: Text(
+              date.day.toString(),
+              style: TextStyle(color: Colors.white),
+            )),
+        todayDayBuilder: (context, date, events) => Container(
+            margin: const EdgeInsets.all(4.0),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Palette.orange,
+                borderRadius: BorderRadius.circular(0.0)),
+            child: Text(
+              date.day.toString(),
+              style: TextStyle(color: Colors.white),
+            )),
       ),
     );
   }
