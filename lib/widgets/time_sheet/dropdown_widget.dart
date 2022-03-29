@@ -1,61 +1,42 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:integer/config/months.dart';
-import 'package:integer/widgets/time_sheet/notifier.dart';
-import 'package:provider/provider.dart';
+import 'package:integer/config/palette.dart';
 
-class DropDown extends StatelessWidget {
-  final List<String> items;
+class DropDown extends StatefulWidget {
+  const DropDown({Key? key}) : super(key: key);
 
-  const DropDown(this.items, {Key? key}) : super(key: key);
+  @override
+  _DropDownState createState() => _DropDownState();
+}
+
+class _DropDownState extends State<DropDown> {
+  String dropdownValue = "Janeiro";
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Container(
-        width: 200,
-        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.black, width: 2),
+      padding: const EdgeInsets.all(20),
+      child: DropdownButton<String>(
+        value: dropdownValue,
+        icon: const Icon(Icons.arrow_downward),
+        elevation: 16,
+        style: const TextStyle(color: Palette.orange),
+        underline: Container(
+          height: 2,
+          color: Palette.orange,
         ),
-        child: DropdownButtonHideUnderline(
-          child: DropdownButton<String>(
-            icon: Icon(Icons.arrow_drop_down, color: Colors.black),
-            value: Months.month,
-            //Months.month,
-            iconSize: 36,
-            onChanged: (value) {
-              context.read<Notifier>().month = value!;
-              //print(Notifier.getMonth);
-            },
-            items: items.map(buildMenuItem).toList(),
-          ),
-        ),
-      ),
-    );
-  }
-
-  DropdownMenuItem<String> buildMenuItem(String item) {
-    return DropdownMenuItem(
-      value: item,
-      child: Consumer<Notifier>(
-        builder: (context, changeNotifier, child) {
-          return Text(Notifier.getMonth);
+        onChanged: (String? newValue) {
+          setState(() {
+            dropdownValue = newValue!;
+          });
         },
-      ),
+        items: Months.months.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+      )
     );
   }
-  /*DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-    value: item,
-    child: Text(
-      item,
-      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-    ),
-  );*/
-
-  /*setState(String value) {
-    Months.month = value;
-    print(Months.month);
-  }*/
 }

@@ -12,20 +12,35 @@ class TimeSheetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: const NavDrawer(),
-        appBar: TopAppBar(title: title, titleColor: Colors.white),
-        body: Container(
-          padding: EdgeInsets.all(12),
-          child: Stack(
-            children: [
-              Positioned(
-                right: 5,
-                top: 50,
-                child: DropDown(Months.months),
-              ),
-              Positioned(child: HourBox())
-            ],
+      drawer: const NavDrawer(),
+      appBar: TopAppBar(title: title, titleColor: Colors.white),
+      /*
+      body: Container(
+        padding: const EdgeInsets.all(12),
+        child: Stack(
+          children: const [
+            Positioned(
+              right: 5,
+              top: 50,
+              child: DropDown(Months.months),
+            ),
+            Positioned(child: HourBox())
+          ],
+        ),
+      )
+      */
+      body: Column(
+        children: const <Widget>[
+          Expanded(
+            flex: 1,
+            child: DropDown(),
           ),
-        ));
+          Expanded(
+            flex: 6,
+            child: HourBox(),
+          ),
+        ],
+      ),
+    );
   }
 }
