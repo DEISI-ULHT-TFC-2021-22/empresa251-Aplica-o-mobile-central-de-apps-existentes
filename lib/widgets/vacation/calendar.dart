@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:integer/config/palette.dart';
-import 'package:integer/widgets/demo_values.dart';
-import 'package:table_calendar/table_calendar.dart';
+import 'package:integer/helper/demo_values.dart';
 
-final Map<DateTime, List> _holidays = DemoValues.holidays;
+final List _vacations = DemoValues.vacations;
 
 class Calendar extends StatefulWidget {
   @override
@@ -11,58 +11,64 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  late CalendarController _calendarController;
-
-  @override
-  void initState() {
-    super.initState();
-    _calendarController = CalendarController();
-  }
-
-  @override
-  void dispose() {
-    _calendarController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return TableCalendar(
-      calendarController: _calendarController,
-      locale: 'en_US',
-      holidays: _holidays,
-      initialCalendarFormat: CalendarFormat.month,
-      formatAnimation: FormatAnimation.slide,
-      availableCalendarFormats: const {
-        CalendarFormat.month: '',
-      },
-      calendarStyle: CalendarStyle(
-        outsideDaysVisible: false,
-        weekendStyle: const TextStyle().copyWith(color: Palette.orange),
-        holidayStyle: const TextStyle().copyWith(color: Palette.green),
-        selectedColor: Palette.green,
-      ),
-      builders: CalendarBuilders(
-        selectedDayBuilder: (context, date, events) => Container(
-            margin: const EdgeInsets.all(4.0),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(0.0)),
-            child: Text(
-              date.day.toString(),
-              style: TextStyle(color: Colors.white),
-            )),
-        todayDayBuilder: (context, date, events) => Container(
-            margin: const EdgeInsets.all(4.0),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      color: Theme.of(context).scaffoldBackgroundColor,
+      elevation: 0,
+      child: Column(
+        children: [
+          Table(
+            border: TableBorder.all(
                 color: Palette.orange,
-                borderRadius: BorderRadius.circular(0.0)),
-            child: Text(
-              date.day.toString(),
-              style: TextStyle(color: Colors.white),
-            )),
+                style: BorderStyle.none,
+                width: 0.5),
+            children: [
+              TableRow( children: [
+                Column(
+                  children:const [
+                    Text('Início', style: TextStyle(fontSize: 16.0))
+                  ]
+                ),
+                Column(
+                    children:const [
+                      Text('Término', style: TextStyle(fontSize: 16.0))
+                    ]
+                ),
+                Column(
+                    children:const [
+                      Text('Período', style: TextStyle(fontSize: 16.0))
+                    ]
+                ),
+                Column(
+                    children:const [
+                      Text('Status', style: TextStyle(fontSize: 16.0))
+                    ]
+                ),
+              ]),
+              for (var vacation in _vacations) TableRow(children: [
+                Column(children: [Text(
+                  DateFormat('dd/MM/yyyy').format(vacation['start']).toString())
+                ]),
+                Column(children: [Text(
+                  DateFormat('dd/MM/yyyy').format(vacation['end']).toString())
+                ]),
+                Column(children: [Text(
+                  vacation['duration'])
+                ]),
+                Column(children: [Text(
+                  vacation['status'],
+                  style: TextStyle(
+                    color: vacation['status'] == 'Aprovado' ? Palette.green : Palette.darkBlue
+                  )
+                )
+                ]),
+              ])
+            ]
+          ),
+        ],
       ),
     );
   }
