@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:integer/config/palette.dart';
 import 'package:integer/widgets/drawer/drawer.dart';
 import 'package:integer/widgets/app_bar.dart';
-import 'package:integer/widgets/vacation/calendar.dart';
-import 'package:integer/widgets/vacation/vacation_label_card.dart';
+import 'package:integer/widgets/vacation/portrait_mode.dart';
+
+import '../widgets/vacation/landscape_mode.dart';
+
 
 class VacationsScreen extends StatelessWidget {
   final String title;
@@ -14,19 +15,15 @@ class VacationsScreen extends StatelessWidget {
     return Scaffold(
       drawer: const NavDrawer(),
       appBar: TopAppBar(title: title, titleColor: Colors.white),
-      body: Column(
-        children: <Widget>[
-          const Expanded(
-            flex: 2,
-            child: VacationLabelCard(),
-          ),
-          const Divider(color: Palette.orange),
-          Expanded(
-            flex: 4,
-            child: Calendar(),
-          ),
-        ],
-      ),
+      body: OrientationBuilder(
+        builder: (context, orientation){
+          if(orientation == Orientation.portrait){
+            return const VacationPortraitMode();
+          } else {
+            return const VacationLandscapeMode();
+          }
+        },
+      )
     );
   }
 }
