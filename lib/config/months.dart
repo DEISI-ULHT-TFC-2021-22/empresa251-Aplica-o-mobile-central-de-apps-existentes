@@ -1,19 +1,19 @@
 class Months {
-  static String month = "Janeiro";
+  static int? month = 1;
 
-  static const Map<String, int> days = {
-    "Janeiro": 31, //Janeiro
-    "Fevereiro": 29,
-    "Março": 31,
-    "Abril": 30,
-    "Maio": 31,
-    "Junho": 30,
-    "Julho": 31,
-    "Agosto": 31,
-    "Setembro": 30,
-    "Outubro": 31,
-    "Novembro": 30,
-    "Dezembro": 31, //Dezembro
+  static const Map<int, int> days = {
+    1: 31, //Janeiro
+    2: 29,
+    3: 31,
+    4: 30,
+    5: 31,
+    6: 30,
+    7: 31,
+    8: 31,
+    9: 30,
+    10: 31,
+    11: 30,
+    12: 31, //Dezembro
   };
 
   static const List<String> months = [
