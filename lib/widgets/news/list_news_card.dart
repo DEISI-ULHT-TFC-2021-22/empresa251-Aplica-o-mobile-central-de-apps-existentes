@@ -3,12 +3,13 @@ import 'package:integer/config/palette.dart';
 import 'package:integer/helper/demo_values.dart';
 
 class PostCard extends StatelessWidget {
-  const PostCard({Key? key}) : super(key: key);
+  bool isLandscape = false;
+  PostCard({Key? key, required this.isLandscape}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 6 / 3,
+      aspectRatio: isLandscape ? 9 / 3 : 6 / 3,
       child: Card(
         elevation: 2,
         child: InkWell(

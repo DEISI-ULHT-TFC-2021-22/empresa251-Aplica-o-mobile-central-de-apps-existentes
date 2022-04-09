@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:integer/widgets/drawer/drawer.dart';
-import 'package:integer/widgets/news/list_news_card.dart';
 import 'package:integer/widgets/app_bar.dart';
+import 'package:integer/widgets/news/landscape_mode.dart';
+import 'package:integer/widgets/news/portrait_mode.dart';
 
 class NewsScreen extends StatelessWidget {
   final String title;
@@ -12,12 +13,15 @@ class NewsScreen extends StatelessWidget {
     return Scaffold(
       drawer: const NavDrawer(),
       appBar: TopAppBar(title: title, titleColor: Colors.white),
-      body: ListView.builder(
-        itemCount: 5,
-        itemBuilder: (BuildContext context, int index) {
-          return const PostCard();
+      body: OrientationBuilder(
+        builder: (context, orientation){
+          if(orientation == Orientation.portrait){
+            return const NewsPortraitMode();
+          } else {
+            return const NewsLandscapeMode();
+          }
         },
-      ),
+      )
 
     );
   }

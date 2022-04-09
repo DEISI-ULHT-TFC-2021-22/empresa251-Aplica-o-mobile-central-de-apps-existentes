@@ -20,7 +20,7 @@ class DropDown extends StatelessWidget {
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           icon: const Icon(Icons.arrow_drop_down, color: Colors.black),
-          value: Months.month,
+          value: Months.month.toString(),
           //Months.month,
           iconSize: 36,
           onChanged: (value) {
