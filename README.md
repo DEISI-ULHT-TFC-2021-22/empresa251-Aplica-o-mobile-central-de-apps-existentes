@@ -41,3 +41,7 @@ Utilização:
 3 screen - screenshot 5 - Ecra de horas, onde será possivel, visualizar as horas preenchidas pelos utilizadores, dependendo do mês, irá apresentar um numero de boxs respetivo aos dias do mês em questão, e apresentará as horas submetidas por cada utilizador, nesta versão apresenta sempre 8 horas preenchidas.
 4 screen -  screenshot 6 - no ecra de horas, é possivel selecionar uma data, pelo selecionador no topo do ecra, ao carregar, abrirá um popup para sibmeter a data que pretende.
 5 screen - screenshot 8 - Ecra de férias demonstra o perido de férias, dias gastos, dias por marcar disponiveis, referentes a cada projeot, nesta fase da app, são dados fixos.
+
+Video no youtube de apresentação da aplicação:
+
+https://youtu.be/I-9hZoCZHzY
