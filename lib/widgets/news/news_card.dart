@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
 import 'package:integer/helper/demo_values.dart';
 
+import '../../model/news.dart';
+
 class NewsCard extends StatelessWidget {
-  const NewsCard({Key? key}) : super(key: key);
+  final News newsCard;
+  NewsCard({Key? key, required this.newsCard}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +24,14 @@ class NewsCard extends StatelessWidget {
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        _NewsImage(),
+                      children: [
+                        _NewsImage(image: newsCard.imageURL),
                       ],
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        _NewsDescription(),
+                      children: [
+                        _NewsDescription(title: newsCard.title),
                       ],
                     ),
                   ]
@@ -37,8 +40,8 @@ class NewsCard extends StatelessWidget {
             Expanded(
               flex: 10,
               child: Row(
-                children: const [
-                  _NewsContent(),
+                children: [
+                  _NewsContent(body: newsCard.body),
                 ],
               ),
             ),
@@ -59,24 +62,27 @@ class NewsCard extends StatelessWidget {
 }
 
 class _NewsImage extends StatelessWidget {
-  const _NewsImage({Key? key}) : super(key: key);
+  String image;
+  _NewsImage({Key? key, required this.image}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      DemoValues.postImage,
+    return Image.network(
+      image,
       height: 100,
+      width: 200,
     );
   }
 }
 
 class _NewsDescription extends StatelessWidget {
-  const _NewsDescription({Key? key}) : super(key: key);
+  final String title;
+  const _NewsDescription({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      DemoValues.postTitle,
+    return Text(
+      title,
       style: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
@@ -86,13 +92,13 @@ class _NewsDescription extends StatelessWidget {
 }
 
 class _NewsContent extends StatelessWidget {
-  const _NewsContent({Key? key}) : super(key: key);
+  String body;
+  _NewsContent({Key? key, required this.body}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Flexible(
-        child: Text(DemoValues.lorenIpsum
-      )
+    return Flexible(
+        child: Text(body)
     );
   }
 }

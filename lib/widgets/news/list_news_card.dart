@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
 import 'package:integer/helper/demo_values.dart';
+import 'package:integer/model/news.dart';
 
 class PostCard extends StatelessWidget {
   bool isLandscape = false;
-  PostCard({Key? key, required this.isLandscape}) : super(key: key);
+  News newsArticle;
+  PostCard({Key? key, required this.isLandscape, required this.newsArticle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +16,15 @@ class PostCard extends StatelessWidget {
       child: Card(
         elevation: 2,
         child: InkWell(
-          onTap: () => Navigator.pushNamed(context, 'newsCard', arguments: {'title': 'Noticia'}),
+          onTap: () => Navigator.pushNamed(context, 'newsCard', arguments: {'newsArticle': newsArticle}),
           child: Container(
             margin: const EdgeInsets.all(6.0),
             padding: const EdgeInsets.all(6.0),
             child: Column(
               children: <Widget>[
-                _Post(),
+                _Post(newsArticle:newsArticle),
                 Divider(color: Palette.orange),
-                _PostDetails(),
+                _PostDetails(newsArticle:newsArticle),
               ],
             ),
           ),
@@ -32,31 +35,39 @@ class PostCard extends StatelessWidget {
 }
 
 class _Post extends StatelessWidget {
-  const _Post({Key? key}) : super(key: key);
+  final News newsArticle;
+  const _Post({Key? key, required this.newsArticle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 3,
-      child: Row(children: <Widget>[_PostImage(), _PostTitleAndSummary()]),
+      flex: 2,
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _PostImage(newsArticle:newsArticle),
+            _PostTitleAndSummary(newsArticle:newsArticle)
+          ]
+      ),
     );
   }
 }
 
 class _PostTitleAndSummary extends StatelessWidget {
-  const _PostTitleAndSummary({Key? key}) : super(key: key);
+  final News newsArticle;
+  const _PostTitleAndSummary({Key? key, required this.newsArticle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final String title = DemoValues.postTitle;
-    final String summary = DemoValues.postSummary;
+    final String title = newsArticle.title;
+    final String summary = newsArticle.summary;
 
     return Expanded(
       flex: 3,
       child: Padding(
         padding: const EdgeInsets.only(left: 4.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text(
@@ -76,31 +87,41 @@ class _PostTitleAndSummary extends StatelessWidget {
 }
 
 class _PostImage extends StatelessWidget {
-  const _PostImage({Key? key}) : super(key: key);
+  final News newsArticle;
+  const _PostImage({Key? key, required this.newsArticle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(flex: 2, child: Image.asset(DemoValues.postImage));
+    return Expanded(
+        flex: 2,
+        child: Image.network(
+            newsArticle.imageURL,
+            height: 100,
+            width: 200
+        )
+    );
   }
 }
 
 class _PostDetails extends StatelessWidget {
-  const _PostDetails({Key? key}) : super(key: key);
+  final News newsArticle;
+  const _PostDetails({Key? key, required this.newsArticle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        _UserImage(),
-        _UserNameAndEmail(),
-        _PostTimeStamp(),
+        _UserImage(newsArticle:newsArticle),
+        _UserNameAndEmail(newsArticle:newsArticle),
+        _PostTimeStamp(newsArticle:newsArticle),
       ],
     );
   }
 }
 
 class _UserNameAndEmail extends StatelessWidget {
-  const _UserNameAndEmail({Key? key}) : super(key: key);
+  final News newsArticle;
+  const _UserNameAndEmail({Key? key, required this.newsArticle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +151,8 @@ class _UserNameAndEmail extends StatelessWidget {
 }
 
 class _UserImage extends StatelessWidget {
-  const _UserImage({Key? key}) : super(key: key);
+  final News newsArticle;
+  const _UserImage({Key? key, required this.newsArticle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +166,8 @@ class _UserImage extends StatelessWidget {
 }
 
 class _PostTimeStamp extends StatelessWidget {
-  const _PostTimeStamp({Key? key}) : super(key: key);
+  final News newsArticle;
+  const _PostTimeStamp({Key? key, required this.newsArticle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

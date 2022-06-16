@@ -6,7 +6,7 @@ import 'package:integer/widgets/news/portrait_mode.dart';
 
 class NewsScreen extends StatelessWidget {
   final String title;
-  const NewsScreen({Key? key, required this.title}) : super(key: key);
+  NewsScreen({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
