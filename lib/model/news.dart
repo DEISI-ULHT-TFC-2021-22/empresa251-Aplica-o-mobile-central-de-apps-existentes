@@ -4,6 +4,8 @@ class News {
   final String body;
   final String summary;
   final String imageURL;
+  final DateTime createdAt;
+  final String createdBy;
 
   const News({
     required this.id,
@@ -11,6 +13,8 @@ class News {
     required this.body,
     required this.summary,
     required this.imageURL,
+    required this.createdAt,
+    required this.createdBy,
   });
 
   factory News.fromJson(Map<String, dynamic> json) {
@@ -20,6 +24,8 @@ class News {
       body: json['body'],
       summary: json['summary'],
       imageURL: json['imageURL'],
+      createdAt: DateTime.parse(json['createdAt'].toString()),
+      createdBy: json['createdBy'],
     );
   }
 }

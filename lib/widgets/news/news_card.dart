@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
 import 'package:integer/helper/demo_values.dart';
+import 'package:intl/intl.dart';
 
 import '../../model/news.dart';
 
@@ -10,53 +11,108 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      child: Container(
-        margin: const EdgeInsets.all(6.0),
-        padding: const EdgeInsets.all(6.0),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 3,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return OrientationBuilder(
+      builder: (context, orientation){
+        if(orientation == Orientation.portrait){
+          return Card(
+            elevation: 2,
+            child: Container(
+              margin: const EdgeInsets.all(6.0),
+              padding: const EdgeInsets.all(6.0),
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 3,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              _NewsImage(image: newsCard.imageURL),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              _NewsDescription(title: newsCard.title),
+                            ],
+                          ),
+                        ]
+                    ),
+                  ),
+                  Expanded(
+                    flex: 10,
+                    child: Row(
                       children: [
-                        _NewsImage(image: newsCard.imageURL),
+                        _NewsContent(body: newsCard.body),
                       ],
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  ),
+                  const Divider(color: Palette.orange),
+                  Expanded(
+                    flex: 1,
+                    child: Row(
                       children: [
-                        _NewsDescription(title: newsCard.title),
+                        _PostDetails(newsArticle: newsCard),
                       ],
                     ),
-                  ]
-              ),
-            ),
-            Expanded(
-              flex: 10,
-              child: Row(
-                children: [
-                  _NewsContent(body: newsCard.body),
+                  ),
                 ],
               ),
             ),
-            const Divider(color: Palette.orange),
-            Expanded(
-              flex: 1,
-              child: Row(
-                children: const [
-                  _PostDetails(),
+          );
+        } else {
+          return Card(
+            elevation: 2,
+            child: Container(
+              margin: const EdgeInsets.all(6.0),
+              padding: const EdgeInsets.all(6.0),
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 7,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              _NewsImage(image: newsCard.imageURL),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              _NewsDescription(title: newsCard.title),
+                            ],
+                          ),
+                        ]
+                    ),
+                  ),
+                  Expanded(
+                    flex: 10,
+                    child: Row(
+                      children: [
+                        _NewsContent(body: newsCard.body),
+                      ],
+                    ),
+                  ),
+                  const Divider(color: Palette.orange),
+                  Expanded(
+                    flex: 1,
+                    child: Row(
+                      children: [
+                        _PostDetails(newsArticle: newsCard),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
+          );
+        }
+      },
     );
   }
 }
@@ -104,16 +160,17 @@ class _NewsContent extends StatelessWidget {
 }
 
 class _PostDetails extends StatelessWidget {
-  const _PostDetails({Key? key}) : super(key: key);
+  News newsArticle;
+  _PostDetails({Key? key, required this.newsArticle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Row(
-        children: const <Widget>[
+        children: <Widget>[
           _UserImage(),
-          _UserNameAndEmail(),
-          _PostTimeStamp(),
+          _UserNameAndEmail(createdBy: newsArticle.createdBy),
+          _PostTimeStamp(createdAt: newsArticle.createdAt),
         ],
       ),
     );
@@ -121,7 +178,8 @@ class _PostDetails extends StatelessWidget {
 }
 
 class _UserNameAndEmail extends StatelessWidget {
-  const _UserNameAndEmail({Key? key}) : super(key: key);
+  String createdBy;
+  _UserNameAndEmail({Key? key, required this.createdBy}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -131,17 +189,9 @@ class _UserNameAndEmail extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget>[
-            Text(
-              DemoValues.userName,
-            ),
-            SizedBox(height: 2.0),
-            Text(
-              DemoValues.userEmail,
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
+          children: <Widget>[
+            Text(createdBy),
+            SizedBox(height: 0.0),
           ],
         ),
       ),
@@ -161,12 +211,13 @@ class _UserImage extends StatelessWidget {
 }
 
 class _PostTimeStamp extends StatelessWidget {
-  const _PostTimeStamp({Key? key}) : super(key: key);
+  DateTime createdAt;
+  _PostTimeStamp({Key? key, required this.createdAt}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      DemoValues.postTime,
+    return Text(
+      DateFormat('dd-MM-yyyy').format(createdAt),
       style: TextStyle(
         color: Palette.orange,
       ),

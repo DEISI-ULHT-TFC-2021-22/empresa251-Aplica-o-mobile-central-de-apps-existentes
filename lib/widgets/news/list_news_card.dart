@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
 import 'package:integer/helper/demo_values.dart';
 import 'package:integer/model/news.dart';
+import 'package:intl/intl.dart';
 
 class PostCard extends StatelessWidget {
   bool isLandscape = false;
@@ -133,16 +134,8 @@ class _UserNameAndEmail extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              DemoValues.userName,
-            ),
+            Text(newsArticle.createdBy),
             SizedBox(height: 2.0),
-            Text(
-              DemoValues.userEmail,
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
           ],
         ),
       ),
@@ -174,7 +167,7 @@ class _PostTimeStamp extends StatelessWidget {
     return Expanded(
       flex: 3,
       child: Text(
-        DemoValues.postTime,
+        DateFormat('dd-MM-yyyy').format(newsArticle.createdAt),
         style: TextStyle(
           color: Palette.orange,
         ),
