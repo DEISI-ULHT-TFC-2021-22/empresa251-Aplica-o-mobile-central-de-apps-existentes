@@ -4,7 +4,9 @@ import 'package:integer/config/months.dart';
 import 'button_widget.dart';
 
 class DatePickerWidget extends StatefulWidget {
-  const DatePickerWidget({Key? key}) : super(key: key);
+  final VoidCallback onDatePicked;
+
+  const DatePickerWidget({Key? key, required this.onDatePicked}) : super(key: key);
 
   @override
   _DatePickerWidget createState() => _DatePickerWidget();
@@ -25,7 +27,9 @@ class _DatePickerWidget extends State<DatePickerWidget> {
   Widget build(BuildContext context) => ButtonHeaderWidget(
     title: 'Date',
     text: getText(),
-    onClicked: () => pickDate(context),
+    onClicked: () {
+      pickDate(context);
+    }
   );
 
   Future pickDate(BuildContext context) async {
@@ -41,5 +45,6 @@ class _DatePickerWidget extends State<DatePickerWidget> {
 
     setState(() => date = newDate);
     setState(() => Months.month = date!.month);
+    widget.onDatePicked();
   }
 }

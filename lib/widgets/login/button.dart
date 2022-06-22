@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
+import 'package:http/http.dart' as http;
 
 class ButtonLogin extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _ButtonLoginState extends State<ButtonLogin> {
           borderRadius: BorderRadius.circular(30),
         ),
         child: FlatButton(
-          onPressed: () {
+          onPressed: () async {
             Navigator.pushNamed(context, 'splash');
           },
           child: Row(

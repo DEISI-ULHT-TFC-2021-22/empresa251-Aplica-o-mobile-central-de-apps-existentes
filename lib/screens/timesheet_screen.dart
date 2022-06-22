@@ -6,27 +6,37 @@ import '../widgets/time_sheet/hour_box_widget.dart';
 
 class TimeSheetScreen extends StatefulWidget {
   final String title;
-  const TimeSheetScreen({Key? key, required this.title}) : super(key: key);
+  TimeSheetScreen({Key? key, required this.title}) : super(key: key);
 
   @override
-  _TimeSheetScreen createState() => _TimeSheetScreen();
+  _TimeSheetScreen createState() {
+    return _TimeSheetScreen();
+  }
 }
 
 class _TimeSheetScreen extends State<TimeSheetScreen> {
+  int counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const NavDrawer(),
       appBar: const TopAppBar(title: "Horas", titleColor: Colors.white),
       body: Column(
-        children: const <Widget>[
+        children: <Widget>[
           Expanded(
             flex: 2,
-            child: DatePickerWidget(),
+            child: DatePickerWidget(
+              onDatePicked: (){
+                setState(() {
+                  counter++;
+                });
+              },
+            ),
           ),
           Expanded(
             flex: 8,
-            child: HourBox(),
+            child: HourBox(counter: counter),
           ),
         ],
       ),
