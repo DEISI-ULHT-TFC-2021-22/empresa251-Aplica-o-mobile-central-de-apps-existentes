@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
 import 'package:integer/helper/demo_values.dart';
@@ -24,7 +23,7 @@ class PostCard extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 _Post(newsArticle:newsArticle),
-                Divider(color: Palette.orange),
+                const Divider(color: Palette.orange),
                 _PostDetails(newsArticle:newsArticle),
               ],
             ),
@@ -73,12 +72,12 @@ class _PostTitleAndSummary extends StatelessWidget {
           children: <Widget>[
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 2.0),
+            const SizedBox(height: 2.0),
             Text(summary),
           ],
         ),
@@ -135,7 +134,7 @@ class _UserNameAndEmail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(newsArticle.createdBy),
-            SizedBox(height: 2.0),
+            const SizedBox(height: 2.0),
           ],
         ),
       ),
@@ -149,7 +148,7 @@ class _UserImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return const Expanded(
       flex: 1,
       child: CircleAvatar(
         backgroundImage: AssetImage(DemoValues.userImage),
@@ -168,7 +167,7 @@ class _PostTimeStamp extends StatelessWidget {
       flex: 3,
       child: Text(
         DateFormat('dd-MM-yyyy').format(newsArticle.createdAt),
-        style: TextStyle(
+        style: const TextStyle(
           color: Palette.orange,
         ),
       ),

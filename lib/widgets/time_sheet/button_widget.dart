@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:integer/config/palette.dart';
 
 class ButtonHeaderWidget extends StatelessWidget {
   final String title;
@@ -33,16 +33,16 @@ class ButtonWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          side: BorderSide(color: Colors.black),
-          minimumSize: Size.fromHeight(40),
+  Widget build(BuildContext context) => OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          side: const BorderSide(color: Palette.orange),
+          minimumSize: const Size.fromHeight(40),
           primary: Colors.white,
         ),
         child: FittedBox(
           child: Text(
             text,
-            style: TextStyle(fontSize: 20, color: Colors.black),
+            style: const TextStyle(fontSize: 20, color: Palette.orange),
           ),
         ),
         onPressed: onClicked,
@@ -61,18 +61,18 @@ class HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          child,
-        ],
-      );
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        title,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      const SizedBox(height: 8),
+      child,
+    ],
+  );
 }

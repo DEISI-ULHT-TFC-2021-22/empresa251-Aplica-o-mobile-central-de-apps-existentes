@@ -25,9 +25,9 @@ class MyApp extends StatelessWidget {
           routes: {
             'splash': (context) => SplashScreenWidget(),
             'login': (context) => LoginScreen(),
-            'news': (context) => NewsScreen(title: 'News'),
-            'newsCard': (context) => SingleNewsScreen(),
-            'timeSheet': (context) => const TimeSheetScreen(title: 'Horas'),
+            'news': (context) => const NewsScreen(title: 'News'),
+            'newsCard': (context) => const SingleNewsScreen(),
+            'timeSheet': (context) => TimeSheetScreen(title: 'Horas'),
             'vacations': (context) => const VacationsScreen(title: 'Férias'),
           },
         ));

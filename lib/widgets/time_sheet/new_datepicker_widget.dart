@@ -3,14 +3,14 @@ import 'package:integer/config/months.dart';
 
 import 'button_widget.dart';
 
-class DatePickerWidget extends StatefulWidget {
-  const DatePickerWidget({Key? key}) : super(key: key);
+class NewDatePickerWidget extends StatefulWidget {
+  const NewDatePickerWidget({Key? key}) : super(key: key);
 
   @override
-  _DatePickerWidget createState() => _DatePickerWidget();
+  _NewDatePickerWidget createState() => _NewDatePickerWidget();
 }
 
-class _DatePickerWidget extends State<DatePickerWidget> {
+class _NewDatePickerWidget extends State<NewDatePickerWidget> {
   DateTime? date;
 
   String getText() {

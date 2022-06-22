@@ -8,7 +8,7 @@ class SplashScreenWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SplashScreen(
       seconds: 5,
-      navigateAfterSeconds: NewsScreen(title: 'Noticias'),
+      navigateAfterSeconds: const NewsScreen(title: 'Noticias'),
       backgroundColor: Palette.orange,
       title: const Text(
         'Integer Consulting',

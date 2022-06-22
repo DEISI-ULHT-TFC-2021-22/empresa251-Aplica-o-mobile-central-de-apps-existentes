@@ -5,7 +5,7 @@ class DrawerHeadProfile extends StatelessWidget {
   final String accountName;
   final String accountEmail;
 
-  DrawerHeadProfile({
+  const DrawerHeadProfile({
     required this.accountName,
     required this.accountEmail,
   });

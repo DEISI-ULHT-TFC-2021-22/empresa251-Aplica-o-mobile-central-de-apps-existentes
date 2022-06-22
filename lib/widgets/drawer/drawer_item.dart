@@ -7,7 +7,7 @@ class DrawerItem extends StatelessWidget {
   final Color textColor;
   final Color iconColor;
 
-  DrawerItem({
+  const DrawerItem({
     required this.text,
     required this.route,
     required this.icon,

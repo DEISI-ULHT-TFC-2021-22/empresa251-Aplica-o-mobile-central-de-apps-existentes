@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:integer/config/months.dart';
-import 'package:integer/widgets/time_sheet/notifier.dart';
 
 class HourBox extends StatefulWidget {
   const HourBox({Key? key}) : super(key: key);
@@ -11,6 +9,11 @@ class HourBox extends StatefulWidget {
 }
 
 class _HourBox extends State<HourBox> {
+
+  refresh(index) {
+    setState(() => index = Months.days[Months.month]);
+  }
+
   @override
   Widget build(BuildContext context) {
     int? index;
@@ -33,10 +36,12 @@ class _HourBox extends State<HourBox> {
                 width: 50,
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black)),
-                child: const Text(
-                  "8",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20),
+                child: const Center(
+                  child: Text(
+                    "8",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               ),
               Text((index + 1).toString(),

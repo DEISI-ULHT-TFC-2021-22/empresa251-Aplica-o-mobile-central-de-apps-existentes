@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:integer/config/palette.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Color titleColor;
 
-  TopAppBar({
+  const TopAppBar({
     required this.title,
     required this.titleColor,
   });
@@ -24,7 +23,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: titleColor
       ),
       actions: [
-        Container(
+        SizedBox(
           width: 42,
           child: Image.asset(
             'assets/images/logo.jpg',

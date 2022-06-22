@@ -7,7 +7,7 @@ import '../../model/news.dart';
 
 class NewsCard extends StatelessWidget {
   final News newsCard;
-  NewsCard({Key? key, required this.newsCard}) : super(key: key);
+  const NewsCard({Key? key, required this.newsCard}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +139,7 @@ class _NewsDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
@@ -168,7 +168,7 @@ class _PostDetails extends StatelessWidget {
     return Expanded(
       child: Row(
         children: <Widget>[
-          _UserImage(),
+          const _UserImage(),
           _UserNameAndEmail(createdBy: newsArticle.createdBy),
           _PostTimeStamp(createdAt: newsArticle.createdAt),
         ],
@@ -191,7 +191,7 @@ class _UserNameAndEmail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(createdBy),
-            SizedBox(height: 0.0),
+            const SizedBox(height: 0.0),
           ],
         ),
       ),
@@ -218,7 +218,7 @@ class _PostTimeStamp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       DateFormat('dd-MM-yyyy').format(createdAt),
-      style: TextStyle(
+      style: const TextStyle(
         color: Palette.orange,
       ),
     );

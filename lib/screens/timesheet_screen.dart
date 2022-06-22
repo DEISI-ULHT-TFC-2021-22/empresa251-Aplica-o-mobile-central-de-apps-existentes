@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:integer/widgets/drawer/drawer.dart';
 import 'package:integer/widgets/app_bar.dart';
 import '../widgets/time_sheet/date_picker_widget.dart';
-import '../widgets/time_sheet/dropdown_widget.dart';
-import '../config/months.dart';
 import '../widgets/time_sheet/hour_box_widget.dart';
 
 class TimeSheetScreen extends StatefulWidget {
@@ -19,7 +17,7 @@ class _TimeSheetScreen extends State<TimeSheetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const NavDrawer(),
-      appBar: TopAppBar(title: "Horas", titleColor: Colors.white),
+      appBar: const TopAppBar(title: "Horas", titleColor: Colors.white),
       body: Column(
         children: const <Widget>[
           Expanded(

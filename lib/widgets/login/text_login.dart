@@ -18,7 +18,7 @@ class _TextLoginState extends State<TextLogin> {
             Container(
               height: 40,
             ),
-            Container(
+            SizedBox(
               height: 80,
               child: Image.asset(
                 'assets/images/logo.jpg',
