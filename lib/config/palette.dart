@@ -4,7 +4,7 @@ class Palette {
     0xffef3e23, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
     <int, Color>{
       50: Color(0xffffe0e0),//10%
-      100: Color(0xfffa948b),//20%
+      100: Color(0xffcb574e),//20%
       200: Color(0xffef3e23),//30%
       300: Color(0xffef3e23),//40%
       400: Color(0xf0ef3e23),//50%

@@ -69,7 +69,7 @@ class _HourBox extends State<HourBox> {
           }),
         );
       } else {
-        return Container();
+        return _NoHoursCard();
       }
     }
 // other arguments
@@ -84,5 +84,28 @@ Future<Timesheet?> fetchHours() async {
     return Timesheet.fromJson(data);
   } else {
     return null;
+  }
+}
+
+class _NoHoursCard extends StatelessWidget {
+  const _NoHoursCard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ListTile(
+          leading: const Icon(
+            Icons.calendar_month,
+            color: Palette.orange,
+          ),
+          title: const Text('Sem horas registadas neste mês'),
+          subtitle: Text(
+            'Selecione o mês para verificar as horas',
+            style: TextStyle(color: Colors.black.withOpacity(0.6)),
+          ),
+        ),
+      ],
+    );
   }
 }

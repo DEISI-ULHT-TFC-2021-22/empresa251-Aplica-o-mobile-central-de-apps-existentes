@@ -187,7 +187,7 @@ class _UserNameAndEmail extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(createdBy),

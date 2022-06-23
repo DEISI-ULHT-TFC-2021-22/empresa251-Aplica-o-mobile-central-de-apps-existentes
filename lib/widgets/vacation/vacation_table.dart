@@ -22,24 +22,36 @@ class VacationTable extends StatelessWidget {
                   color: Palette.orange, style: BorderStyle.none, width: 0.5),
               children: [
                 TableRow(
-                    decoration: const BoxDecoration(color: Colors.grey, boxShadow: [
+                    decoration: const BoxDecoration(color: Palette.darkBlue, boxShadow: [
                       BoxShadow(
-                          color: Colors.black,
+                          color: Palette.orange,
                           blurRadius: 1.0,
                           offset: Offset(0.0, 1.0))
                     ]),
                     children: [
                       Column(children: const [
-                        Text('Início', style: TextStyle(fontSize: 16.0))
+                        Text('Início', style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white
+                        ))
                       ]),
                       Column(children: const [
-                        Text('Término', style: TextStyle(fontSize: 16.0))
+                        Text('Término', style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white
+                        ))
                       ]),
                       Column(children: const [
-                        Text('Período', style: TextStyle(fontSize: 16.0))
+                        Text('Período', style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white
+                        ))
                       ]),
                       Column(children: const [
-                        Text('Status', style: TextStyle(fontSize: 16.0))
+                        Text('Status', style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white
+                        ))
                       ]),
                     ]),
                 for (var vacation in vacations!)

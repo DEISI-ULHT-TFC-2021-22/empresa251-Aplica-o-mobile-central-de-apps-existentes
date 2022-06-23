@@ -19,7 +19,7 @@ class _DatePickerWidget extends State<DatePickerWidget> {
     if (date == null) {
       return 'Escolha o mês';
     } else {
-      return '${date?.month} / ${date?.year}';
+      return '${Months.dayOfMonth[date?.month]} / ${date?.year}';
     }
   }
 
