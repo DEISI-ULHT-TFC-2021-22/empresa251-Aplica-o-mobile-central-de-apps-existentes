@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integer/model/userinfo.dart';
 
 class PasswordInput extends StatefulWidget {
   @override
@@ -6,6 +7,7 @@ class PasswordInput extends StatefulWidget {
 }
 
 class _PasswordInputState extends State<PasswordInput> {
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,12 +15,16 @@ class _PasswordInputState extends State<PasswordInput> {
       child: SizedBox(
         height: 60,
         width: MediaQuery.of(context).size.width,
-        child: const TextField(
-          style: TextStyle(
+        child: TextField(
+          onChanged: (text) {
+            Userinfo.password = passwordController.text;
+          },
+          controller: passwordController,
+          style: const TextStyle(
             color: Colors.white,
           ),
           obscureText: true,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             border: InputBorder.none,
             labelText: 'Password',
             labelStyle: TextStyle(

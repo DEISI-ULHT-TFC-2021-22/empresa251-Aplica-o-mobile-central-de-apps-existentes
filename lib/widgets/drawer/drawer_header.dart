@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
+import '../../model/userinfo.dart';
 
 class DrawerHeadProfile extends StatelessWidget {
   final String accountName;
@@ -13,12 +14,12 @@ class DrawerHeadProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return UserAccountsDrawerHeader(
-      accountName: Text(accountName),
-      accountEmail: Text(accountEmail),
+      accountName: Text(Userinfo.email),
+      accountEmail: Text(Userinfo.user!.name),
       currentAccountPicture: CircleAvatar(
         child: ClipOval(
-          child: Image.asset(
-            'assets/images/avatar.png',
+          child: Image.network(
+            Userinfo.user!.avatarURL,
             fit: BoxFit.cover,
             width: 90,
             height: 90,

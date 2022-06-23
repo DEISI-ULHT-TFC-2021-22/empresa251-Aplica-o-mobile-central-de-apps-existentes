@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'package:integer/config/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:integer/config/palette.dart';
 import 'package:http/http.dart' as http;
+import '../../model/user.dart';
+import '../../model/userinfo.dart';
 
 class ButtonLogin extends StatefulWidget {
   @override
@@ -22,8 +26,24 @@ class _ButtonLoginState extends State<ButtonLogin> {
         ),
         child: FlatButton(
           onPressed: () async {
-            Navigator.pushNamed(context, 'splash');
-          },
+            var result = await fetchLogin();
+            Userinfo.user = result;
+            if (result != null) {
+              Navigator.pushNamed(context, 'splash');
+            } else {
+              const snackBar = SnackBar(
+                content: Text(
+                  'Email ou password incorrectos',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Palette.orange,
+                  ),
+                ),
+                backgroundColor: Colors.white,
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            }
+            },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const <Widget>[
@@ -44,5 +64,15 @@ class _ButtonLoginState extends State<ButtonLogin> {
         ),
       ),
     );
+  }
+}
+
+Future<User?> fetchLogin() async {
+  final response = await http.get(Uri.parse('https://tfcapi.app.smartmock.io/login?email=' + Userinfo.email + '&&password=' + Userinfo.password));
+  if (response.statusCode == 200) {
+    final data = jsonDecode(response.body);
+    return User.fromJson(data);
+  } else {
+    return null;
   }
 }

@@ -45,6 +45,7 @@ class _DatePickerWidget extends State<DatePickerWidget> {
 
     setState(() => date = newDate);
     setState(() => Months.month = date!.month);
+    setState(() => Months.date = newDate);
     widget.onDatePicked();
   }
 }

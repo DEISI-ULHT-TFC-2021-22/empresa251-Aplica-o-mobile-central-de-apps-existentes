@@ -5,6 +5,7 @@ import 'package:integer/config/palette.dart';
 import 'package:http/http.dart' as http;
 
 import '../../model/vacations_summary.dart';
+import '../../model/userinfo.dart';
 
 class VacationLabelCard extends StatelessWidget {
   const VacationLabelCard({Key? key}) : super(key: key);
@@ -60,7 +61,7 @@ class _CardListTile extends StatelessWidget {
 }
 
 Future<VacationSummary> fetchVacationSummary() async {
-  final response = await http.get(Uri.parse('https://tfcapi.app.smartmock.io/vacations/summary?userid=1'));
+  final response = await http.get(Uri.parse('https://tfcapi.app.smartmock.io/vacations/summary?userid=' + Userinfo.user!.userid.toString()));
   if (response.statusCode == 200) {
     final data = jsonDecode(response.body);
     return VacationSummary.fromJson(data);

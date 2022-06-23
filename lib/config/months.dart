@@ -1,5 +1,6 @@
 class Months {
   static int? month = 1;
+  static DateTime date = DateTime.now();
 
   static const Map<int, int> days = {
     1: 31, //Janeiro

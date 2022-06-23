@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:integer/model/vacation.dart';
 import 'package:integer/widgets/vacation/vacation_table.dart';
+import '../../model/userinfo.dart';
 
 
 class Calendar extends StatefulWidget {
@@ -29,7 +30,7 @@ class _CalendarState extends State<Calendar> {
 }
 
 Future<List<Vacation>> fetchVacations() async {
-  final response = await http.get(Uri.parse('https://tfcapi.app.smartmock.io/vacations?userid=1'));
+  final response = await http.get(Uri.parse('https://tfcapi.app.smartmock.io/vacations?userid=' + Userinfo.user!.userid.toString()));
   List<Vacation> userVacations = [];
   if (response.statusCode == 200) {
     final data = jsonDecode(response.body);
