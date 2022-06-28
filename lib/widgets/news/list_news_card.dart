@@ -68,17 +68,10 @@ class _PostTitleAndSummary extends StatelessWidget {
         padding: const EdgeInsets.only(left: 4.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             const SizedBox(height: 2.0),
-            Text(summary),
+            Text(summary)
           ],
         ),
       ),

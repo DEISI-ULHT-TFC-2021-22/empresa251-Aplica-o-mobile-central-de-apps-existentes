@@ -38,7 +38,7 @@ Future<List<News>> fetchNews() async {
   final response = await http.get(Uri.parse('https://tfcapi.app.smartmock.io/news'));
   List<News> newsArticles = [];
   if (response.statusCode == 200) {
-    final data = jsonDecode(response.body);
+    final data = jsonDecode(utf8.decode(response.bodyBytes));
     for(var news in data.values) {
       newsArticles.add(News.fromJson(news));
     }

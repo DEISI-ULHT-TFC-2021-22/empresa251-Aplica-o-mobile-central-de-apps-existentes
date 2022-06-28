@@ -14,22 +14,25 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [ChangeNotifierProvider(create: (context) => Notifier())],
-        child: MaterialApp(
-          title: 'Integer',
-          theme: ThemeData(
-            primarySwatch: Palette.orange,
-          ),
-          initialRoute: 'login',
-          routes: {
-            'splash': (context) => SplashScreenWidget(),
-            'login': (context) => LoginScreen(),
-            'news': (context) => const NewsScreen(title: 'News'),
-            'newsCard': (context) => const SingleNewsScreen(),
-            'timeSheet': (context) => TimeSheetScreen(title: 'Horas'),
-            'vacations': (context) => const VacationsScreen(title: 'Férias'),
-          },
-        ));
+    return MaterialApp(
+        home: MultiProvider(
+            providers: [ChangeNotifierProvider(create: (context) => Notifier())],
+            child: MaterialApp(
+              title: 'Integer',
+              theme: ThemeData(
+                primarySwatch: Palette.orange,
+              ),
+              initialRoute: 'login',
+              routes: {
+                'splash': (context) => SplashScreenWidget(),
+                'login': (context) => LoginScreen(),
+                'news': (context) => const NewsScreen(title: 'News'),
+                'newsCard': (context) => const SingleNewsScreen(),
+                'timeSheet': (context) => TimeSheetScreen(title: 'Horas'),
+                'vacations': (context) => const VacationsScreen(title: 'Férias'),
+              },
+            )
+        )
+    );
   }
 }
