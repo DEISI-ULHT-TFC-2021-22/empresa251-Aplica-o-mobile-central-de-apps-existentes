@@ -66,14 +66,16 @@ class _PostTitleAndSummary extends StatelessWidget {
       flex: 3,
       child: Padding(
         padding: const EdgeInsets.only(left: 4.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const SizedBox(height: 2.0),
-            Text(summary)
-          ],
-        ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const SizedBox(height: 2.0),
+              Text(summary)
+            ],
+          ),
+        )
       ),
     );
   }

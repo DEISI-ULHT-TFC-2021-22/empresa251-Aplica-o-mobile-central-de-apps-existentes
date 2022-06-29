@@ -22,23 +22,48 @@ class _TimeSheetScreen extends State<TimeSheetScreen> {
     return Scaffold(
       drawer: const NavDrawer(),
       appBar: const TopAppBar(title: "Horas", titleColor: Colors.white),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: DatePickerWidget(
-              onDatePicked: (){
-                setState(() {
-                  counter++;
-                });
-              },
-            ),
-          ),
-          Expanded(
-            flex: 8,
-            child: HourBox(counter: counter),
-          ),
-        ],
+      body: OrientationBuilder(
+        builder: (context, orientation){
+          if(orientation == Orientation.portrait){
+            return Column(
+              children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: DatePickerWidget(
+                    onDatePicked: (){
+                      setState(() {
+                        counter++;
+                      });
+                    },
+                  ),
+                ),
+                Expanded(
+                  flex: 8,
+                  child: HourBox(counter: counter),
+                ),
+              ],
+            );
+          } else {
+            return Column(
+              children: <Widget>[
+                Expanded(
+                  flex: 4,
+                  child: DatePickerWidget(
+                    onDatePicked: (){
+                      setState(() {
+                        counter++;
+                      });
+                    },
+                  ),
+                ),
+                Expanded(
+                  flex: 8,
+                  child: HourBox(counter: counter),
+                ),
+              ],
+            );
+          }
+        },
       ),
     );
   }

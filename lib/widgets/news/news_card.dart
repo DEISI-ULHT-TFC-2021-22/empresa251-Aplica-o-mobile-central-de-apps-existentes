@@ -32,31 +32,31 @@ class NewsCard extends StatelessWidget {
                               _NewsImage(image: newsCard.imageURL),
                             ],
                           ),
-                          Column(
+                          SingleChildScrollView(child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               _NewsDescription(title: newsCard.title),
                             ],
-                          ),
+                          ),)
                         ]
                     ),
                   ),
                   Expanded(
                     flex: 10,
-                    child: Row(
+                    child: SingleChildScrollView(child: Row(
                       children: [
                         _NewsContent(body: newsCard.body),
                       ],
-                    ),
+                    ),)
                   ),
                   const Divider(color: Palette.orange),
                   Expanded(
                     flex: 1,
-                    child: Row(
+                    child: SingleChildScrollView(child: Row(
                       children: [
                         _PostDetails(newsArticle: newsCard),
                       ],
-                    ),
+                    ),)
                   ),
                 ],
               ),

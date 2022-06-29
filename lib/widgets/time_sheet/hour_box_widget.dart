@@ -34,40 +34,41 @@ class _HourBox extends State<HourBox> {
         BuildContext context,
         AsyncSnapshot<dynamic> snapshot) {
           if (timesheet != null) {
-            return Wrap(
+            return SingleChildScrollView(child: Wrap(
               children: List.generate(index!, (index) {
                 return Container(
-                  margin: const EdgeInsets.only(right: 10),
-                  child: Column(children: [
-                    const SizedBox(
-                    height: 25,
-                    width: 40,
-                  ),
-                  Container(
-                    height: 40,
-                    width: 50,
-                    decoration:
-                      BoxDecoration(border: Border.all(color: Colors.black)),
-                    child: Center(
-                      child: Text(
-                        timesheet!.hoursByDay(index + 1).toString(),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                            color: timesheet!.hoursByDay(index + 1) != 8 ? Palette.orange : Palette.green
+                    margin: const EdgeInsets.only(right: 10),
+                    child: Column(children: [
+                      const SizedBox(
+                        height: 25,
+                        width: 40,
+                      ),
+                      Container(
+                        height: 40,
+                        width: 50,
+                        decoration:
+                        BoxDecoration(border: Border.all(color: Colors.black)),
+                        child: Center(
+                          child: Text(
+                            timesheet!.hoursByDay(index + 1).toString(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: timesheet!.hoursByDay(index + 1) != 8 ? Palette.orange : Palette.green
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  Text((index + 1).toString(),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 15
-                    )
-                  ),
-              ])
+                      Text((index + 1).toString(),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15
+                          )
+                      ),
+                    ])
+                );
+              }),
+            )
             );
-          }),
-        );
       } else {
         return _NoHoursCard();
       }
